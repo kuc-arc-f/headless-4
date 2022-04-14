@@ -169,7 +169,7 @@ console.log(this.state);
           <Link href={`/posts?site=${this.props.siteId}`}>
             <a className="btn btn-outline-primary mt-2">Back</a></Link>
           <hr className="mt-2 mb-2" />
-          <h1>Post - Edit</h1>
+          <h3>Post - Edit</h3>
           <div className="col-md-6 form-group">
             <label>Category :</label>
             <select id="category_id" name="category_id" className="form-select">

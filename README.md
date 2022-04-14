@@ -6,7 +6,7 @@
 
  date    : 2022/04/12
 
- update  :
+ update  : 2022/04/13
 
 ***
 ### Summary
@@ -19,6 +19,11 @@ Simple headless CMS, Next.js 12 + apollo-client
 ### backend : apollo-server
 
 https://github.com/kuc-arc-f/apollo_cms1
+
+***
+### Get started
+
+https://cms-kuc-js-front1.pages.dev/pages/20220414094340
 
 ***
 ### Setup

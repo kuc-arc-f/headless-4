@@ -71,15 +71,15 @@ console.log(this.state);
       {this.state.button_display ? (<div />): (
         <LoadingBox></LoadingBox>
       )}       
-      <div className="container py-4">
+      <div className="container mt-1 pb-4">
         <h3>Pages - index</h3>
         siteId : {this.props.siteId}
-        <hr />
+        <hr className="my-1" />
         <Link href={`/pages/create?site=${this.props.siteId}`}>
-          <a><button className="btn btn-primary mt-2">Create</button>
+          <a><button className="btn btn-primary">Create</button>
           </a>
         </Link>
-        <hr />
+        <hr className="my-1" />
         <table className="table table-hover">
           <thead>
             <tr>

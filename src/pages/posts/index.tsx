@@ -139,17 +139,22 @@ export default class SiteIndex extends React.Component<IProps, IState> {
       {this.state.button_display ? (<div />): (
         <LoadingBox></LoadingBox>
       )}       
-      <div className="container py-4">
-        <h3>Posts - index</h3>
-        siteId : {this.props.siteId}
-        <hr className="my-1" />
-        <Link href={`/posts/create?site=${this.props.siteId}`}>
-          <a><button className="btn btn-primary mt-0">Create</button>
-          </a>
-        </Link>
+      <div className="container mt-1 mb-4">
+        <div className="row">
+          <div className="col-md-4"><h3>Posts</h3>
+          </div>
+          <div className="col-md-4 pt-2">siteId : {this.props.siteId}
+          </div>
+          <div className="col-md-4 text-center">
+            <Link href={`/posts/create?site=${this.props.siteId}`}>
+              <a><button className="btn btn-primary mt-0">Create</button>
+              </a>
+            </Link>
+          </div>
+        </div>
         <hr className="my-1" />
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-md-8 pt-2">
             <button onClick={() => this.clickClear()} className="btn btn-sm btn-outline-primary">Clear
             </button>
             <span className="search_key_wrap">
@@ -158,10 +163,9 @@ export default class SiteIndex extends React.Component<IProps, IState> {
             </span>
             <button onClick={() => this.clickSearch()} className="btn btn-sm btn-outline-primary">Search
             </button>            
-
           </div>
           <div className="col-md-4">
-            <label>Category:</label>
+            <span>Category:</span>
             <select className="form-select" name="category" id="category"
             onChange={() => this.changeCategory()}>
             <option key={0} value={0}></option>

@@ -75,12 +75,12 @@ console.log(this.state);
       )}       
       <div className="container py-4">
         <h3>Site - index</h3>
-        <hr />
+        <hr className="my-1" />
         <Link href="/sites/create">
-          <a><button className="btn btn-primary mt-2">Create</button>
+          <a><button className="btn btn-primary">Create</button>
           </a>
         </Link>
-        <hr />
+        <hr className="my-1" />
         <table className="table table-hover">
           <thead>
             <tr>
