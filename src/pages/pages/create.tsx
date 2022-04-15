@@ -85,10 +85,17 @@ console.log(this.state);
           <LoadingBox></LoadingBox>
         )}
         <div className="container">
-          <Link href={`/posts?site=${this.props.siteId}`}>
-            <a className="btn btn-outline-primary mt-2">Back</a></Link>
+          <div className="row">
+            <div className="col-md-4">
+              <Link href={`/pages?site=${this.props.siteId}`}>
+              <a className="btn btn-outline-primary mt-2">Back</a></Link>
+            </div>
+            <div className="col-md-4"><h3>Page - Create</h3>
+            </div>
+            <div className="col-md-4">
+            </div>
+          </div>
           <hr className="mt-2 mb-2" />
-          <h3>Page - Create</h3>
           <div className="col-md-6 form-group">
             <label>Title:</label>
             <input type="text" name="title" id="title" className="form-control"

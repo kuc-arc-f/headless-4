@@ -21,14 +21,25 @@ function Page(props) {
     categoryName = category[0].name;
   }
   let createdAt = LibCommon.converDatetimeString(item.createdAt);
-// console.log(createdAt)
+//console.log(content)
   return (
   <Layout>
     <div className="container">
-      <Link href={`/posts?site=${item.siteId}`}>
-        <a className="btn btn-outline-primary mt-2">Back</a>
-      </Link>
-      <hr />
+      <div className="row">
+        <div className="col-md-4">
+          <Link href={`/posts?site=${item.siteId}`}>
+            <a className="btn btn-outline-primary mt-2">Back</a>
+          </Link>
+        </div>
+        <div className="col-md-4">
+          <Link href={`/posts/edit/${item.id}`}>
+            <a className="btn btn-primary mt-2">Edit</a>
+          </Link>
+        </div>
+        <div className="col-md-4">
+        </div>
+      </div>
+      <hr className="my-1" />
       <div><h1>Title : {item.title}</h1>
       </div>
       date : {createdAt}<br />
@@ -41,6 +52,27 @@ function Page(props) {
       </div>      
       <hr />
     </div>
+    <style>{`
+      div#post_item img{
+        max-width : 100%;
+        height : auto;
+      }
+      #post_item pre{
+        background-color: #EEE;
+        padding: 0.5rem;
+      }      
+      .show_head_wrap{ font-size: 1.4rem; }
+      .pdf_next_page {
+        page-break-before: always;
+        background-color: green;
+        border: none;        
+      }
+      @media print {
+        .hidden_print{
+          display: none;
+        }
+      }
+      `}</style>     
   </Layout>
   )
 }

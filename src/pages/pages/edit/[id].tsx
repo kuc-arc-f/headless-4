@@ -10,6 +10,7 @@ import LibCookie from "@/lib/LibCookie";
 import LibGraphql from "@/lib/LibGraphql";
 import Layout from '@/components/layout'
 import LoadingBox from '@/components/LoadingBox'
+import MessageBox from '@/components/MessageBox'
 
 interface IState {
   title: string,
@@ -17,6 +18,7 @@ interface IState {
   _token: string,
   user_id: string,
   button_display: boolean,
+  message: string,
 }
 interface IProps {
   id: string,
@@ -64,7 +66,7 @@ export default class TaskEdit extends React.Component<IProps, IState> {
       title: this.props.item.title, 
       content: content,
       _token : this.props.csrf.token,
-      user_id: '', button_display: false,
+      user_id: '', button_display: false, message: '',
     }
 //console.log(props )
   }
@@ -131,7 +133,8 @@ console.log(result);
         throw new Error('Error , updateBook');
       }
 */
-      Router.push(`/pages?site=${this.props.siteId}`);
+      this.setState({message: "Success , Save"});
+//      Router.push(`/pages?site=${this.props.siteId}`);
     } catch (error) {
       console.error(error);
       alert("Error, save item");
@@ -144,12 +147,29 @@ console.log(this.state);
         {this.state.button_display ? (<div />): (
           <LoadingBox></LoadingBox>
         )
-        }        
+        }      
+        <MessageBox success={this.state.message} error=""/>  
         <div className="container">
-          <Link href={`/pages?site=${this.props.siteId}`}>
-            <a className="btn btn-outline-primary mt-2">Back</a></Link>
+          <div className="row">
+            <div className="col-md-4">
+              <Link href={`/pages?site=${this.props.siteId}`}>
+              <a className="btn btn-outline-primary mt-2">Back</a></Link>              
+            </div>
+            <div className="col-md-4"><h3>Pages - Edit</h3>
+            </div>
+            <div className="col-md-4">
+              {this.state.button_display ? (
+              <div>
+                <div className="form-group mt-2">
+                  <button className="btn btn-primary" onClick={this.handleClick}>Save
+                  </button>
+                </div>
+              </div>
+              ): ""}          
+            </div>
+          </div>
+
           <hr className="mt-2 mb-2" />
-          <h3>Pages - Edit</h3>
           <div className="row">
             <div className="col-md-6">
               <div className="form-group">
@@ -169,18 +189,19 @@ console.log(this.state);
           </div> 
           {this.state.button_display ? (
           <div>
+            {/*
             <div className="form-group mt-2">
               <button className="btn btn-primary" onClick={this.handleClick}>Save
               </button>
             </div>
+            */}
             <hr />                  
             <div className="form-group">
               <button className="btn btn-danger" onClick={this.handleClickDelete}>Delete
               </button>
             </div>
           </div>
-          ): ""
-          }          
+          ): ""}          
           <hr />
           ID : {this.props.id}
         </div>

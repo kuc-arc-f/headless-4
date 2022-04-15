@@ -28,6 +28,27 @@ console.log(item)
       <hr />
       ID: {item.id}      
     </div>
+    <style>{`
+      div#post_item img{
+        max-width : 100%;
+        height : auto;
+      }
+      #post_item pre{
+        background-color: #EEE;
+        padding: 0.5rem;
+      }      
+      .show_head_wrap{ font-size: 1.4rem; }
+      .pdf_next_page {
+        page-break-before: always;
+        background-color: green;
+        border: none;        
+      }
+      @media print {
+        .hidden_print{
+          display: none;
+        }
+      }
+      `}</style>    
   </Layout>
   )
 }

@@ -8,6 +8,7 @@ import client from '@/apollo-client'
 
 import Layout from '@/components/layout'
 import LoadingBox from '@/components/LoadingBox'
+import MessageBox from '@/components/MessageBox'
 import LibCookie from "@/lib/LibCookie";
 import LibGraphql from "@/lib/LibGraphql";
 import LibPost from "@/lib/LibPost";
@@ -20,6 +21,7 @@ interface IState {
   categoryId: number,
   button_display: boolean,
   categoryItems: any[],
+  message: string,
 }
 interface IProps {
   id: string,
@@ -70,7 +72,7 @@ console.log(item);
       categoryId: this.props.item.categoryId,
       _token : this.props.csrf.token,
       user_id: '', button_display: false,
-      categoryItems: [],
+      categoryItems: [], message: "",
     }
 console.log(props )
   }
@@ -150,26 +152,50 @@ console.log(result);
         throw new Error('Error , updateBook');
       }
 */
-      Router.push(`/posts?site=${this.props.siteId}`);
+      this.setState({message: "Success , Save"});
+      //alert("Success save");
+      //Router.push(`/posts?site=${this.props.siteId}`);
     } catch (error) {
       console.error(error);
       alert("Error, save item");
     }     
   }  
   render() {
-console.log(this.state);
+//console.log(this.state);
     const category = this.state.categoryItems;
     return (
       <Layout>
         {this.state.button_display ? (<div />): (
           <LoadingBox></LoadingBox>
         )
-        }        
+        } 
+        <MessageBox success={this.state.message} error=""/>       
         <div className="container">
-          <Link href={`/posts?site=${this.props.siteId}`}>
-            <a className="btn btn-outline-primary mt-2">Back</a></Link>
+          <div className="row">
+            <div className="col-md-4">
+              <Link href={`/posts?site=${this.props.siteId}`}>
+              <a className="btn btn-outline-primary mt-2">Back</a></Link>
+            </div>
+            <div className="col-md-4"><h3>Post - Edit</h3>
+            </div>
+            <div className="col-md-4">
+              {this.state.button_display ? (
+              <div>
+                <div className="form-group mt-2">
+                  <button className="btn btn-primary" onClick={this.handleClick}>Save
+                  </button>
+                  <Link href={`/posts/${this.props.id}`}>
+                    <a><button className="btn btn-outline-primary mx-2">Preview</button>
+                    </a>
+                  </Link>
+                </div>
+               </div>
+              ): ""
+              }               
+            </div>
+          </div>
           <hr className="mt-2 mb-2" />
-          <h3>Post - Edit</h3>
+          
           <div className="col-md-6 form-group">
             <label>Category :</label>
             <select id="category_id" name="category_id" className="form-select">
@@ -194,14 +220,14 @@ console.log(this.state);
                defaultValue={this.state.content}></textarea>
             </div>
           </div> 
-
-
           {this.state.button_display ? (
           <div>
+            {/*
             <div className="form-group mt-2">
               <button className="btn btn-primary" onClick={this.handleClick}>Save
               </button>
             </div>
+            */}
             <hr />                  
             <div className="form-group">
               <button className="btn btn-danger" onClick={this.handleClickDelete}>Delete
