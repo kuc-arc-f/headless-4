@@ -6,7 +6,7 @@ module.exports = {
   },
   env: {
     APP_NAME: "headless-4",
-    COOKIE_KEY_USER_ID: "next2022uid",
+    COOKIE_KEY_USER_ID: "headless4uid",
     CSRF_SECRET: "secret1234",
     APOLLO_SV_URI: "http://localhost:4000/graphql",
     /* firebase */
