@@ -163,6 +163,10 @@ console.log(this.state);
                 <div className="form-group mt-2">
                   <button className="btn btn-primary" onClick={this.handleClick}>Save
                   </button>
+                  <Link href={`/pages/${this.props.id}`}>
+                    <a><button className="btn btn-outline-primary mx-2">Preview</button>
+                    </a>
+                  </Link>              
                 </div>
               </div>
               ): ""}          

@@ -11,13 +11,23 @@ function Page(props) {
   const item = props.item
   let content = LibGraphql.getTagString(item.content)
   content = marked.parse(content);
-console.log(item)
+//console.log(item)
   return (
   <Layout>
     <div className="container">
-      <Link href={`/pages?site=${item.siteId}`}>
-        <a className="btn btn-outline-primary mt-2">Back</a>
-      </Link>
+      <div className="row">
+        <div className="col-md-4">
+          <Link href={`/pages?site=${item.siteId}`}>
+            <a className="btn btn-outline-primary mt-2">Back</a>
+          </Link>
+        </div>
+        <div className="col-md-4">
+          <Link href={`/pages/edit/${item.id}`}>
+            <a className="btn btn-primary mt-2">Edit</a>
+          </Link>          
+        </div>
+        <div className="col-md-4"></div>
+      </div>
       <hr />
       <div><h1>Title : {item.title}</h1>
       </div>
@@ -69,7 +79,7 @@ export const getServerSideProps = async (ctx) => {
     ` ,
     fetchPolicy: "network-only"
   });
-console.log(data.data.page); 
+//console.log(data.data.page); 
   const item = data.data.page; 
   return {
     props: { item: item },

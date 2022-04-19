@@ -64,7 +64,7 @@ console.log(data.data.categories);
   }    
   render(){
     const data = this.state.items;
-console.log(this.state);
+//console.log(this.state);
     return(
     <Layout>
       <SiteNavi siteId={this.props.siteId} />
@@ -74,12 +74,12 @@ console.log(this.state);
       <div className="container py-4">
         <h3>Category - index</h3>
         siteId : {this.props.siteId}
-        <hr />
+        <hr className="my-1" />
         <Link href={`/category/create?site=${this.props.siteId}`}>
           <a><button className="btn btn-primary mt-2">Create</button>
           </a>
         </Link>
-        <hr />
+        <hr className="my-1" />
         <table className="table table-hover">
           <thead>
             <tr>

@@ -30,7 +30,7 @@ export default class PageCreate extends Component<IProps, IState> {
       title: '', content: '', _token : '', user_id: '', button_display: false
     }
     this.handleClick = this.handleClick.bind(this);
-console.log(props)
+//console.log(props)
   }
   async componentDidMount(){
     const key = process.env.COOKIE_KEY_USER_ID;
@@ -77,7 +77,7 @@ console.log(result);
     }    
   } 
   render() {
-console.log(this.state);
+//console.log(this.state);
     return (
     <Layout>
       <main>
@@ -93,9 +93,16 @@ console.log(this.state);
             <div className="col-md-4"><h3>Page - Create</h3>
             </div>
             <div className="col-md-4">
+            {this.state.button_display ? (
+              <div className="form-group my-1">
+                <button className="btn btn-primary" onClick={this.handleClick}>Create
+                </button>
+              </div>                
+              ): (<div />)
+            }
             </div>
           </div>
-          <hr className="mt-2 mb-2" />
+          <hr className="my-1" />
           <div className="col-md-6 form-group">
             <label>Title:</label>
             <input type="text" name="title" id="title" className="form-control"
@@ -108,17 +115,15 @@ console.log(this.state);
                rows={10} placeholder="markdown input, please"></textarea>
             </div>
           </div> 
+          <hr />
+          {/*
           {this.state.button_display ? (
           <div className="form-group my-2">
             <button className="btn btn-primary" onClick={this.handleClick}>Create
             </button>
           </div>                
-          ): (
-          <div>false</div>
-          )
+          ): (<div />)
           }          
-          <hr />
-          {/*
           */}
         </div>
       </main>

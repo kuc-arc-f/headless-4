@@ -56,7 +56,7 @@ console.log(props);
       `,
       fetchPolicy: "network-only"
     });
-console.log(data.data.pages);
+//console.log(data.data.pages);
     let items = data.data.pages;
     this.setState({
       items: items, items_all: items, button_display: true, pageCount: 0, 
@@ -64,7 +64,7 @@ console.log(data.data.pages);
   }    
   render(){
     const data = this.state.items;
-console.log(this.state);
+//console.log(this.state);
     return(
     <Layout>
       <SiteNavi siteId={this.props.siteId} />
@@ -72,13 +72,18 @@ console.log(this.state);
         <LoadingBox></LoadingBox>
       )}       
       <div className="container mt-1 pb-4">
-        <h3>Pages - index</h3>
-        siteId : {this.props.siteId}
-        <hr className="my-1" />
-        <Link href={`/pages/create?site=${this.props.siteId}`}>
-          <a><button className="btn btn-primary">Create</button>
-          </a>
-        </Link>
+        <div className="row">
+          <div className="col-md-4"><h3>Pages - index</h3>
+          </div>
+          <div className="col-md-4">siteId : {this.props.siteId}
+          </div>
+          <div className="col-md-4">
+            <Link href={`/pages/create?site=${this.props.siteId}`}>
+              <a><button className="btn btn-primary">Create</button>
+              </a>
+            </Link>
+          </div>
+        </div>
         <hr className="my-1" />
         <table className="table table-hover">
           <thead>
